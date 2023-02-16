@@ -1,0 +1,54 @@
+package com.example.yugioh.enums;
+
+public enum EffectType {
+    DESTROY_SPELL_TRAP,
+    DESTROY_MONSTER,
+    DESTROY_HAND,
+    DESTROY_DECK,
+
+    BANISH,
+
+    SEND_GV,
+    SEND_NHAND,
+    SEND_NDECK,
+
+    DRAW,
+
+    SEARCH_DECK,
+
+    CHANGE_POSITION,
+    CHANGE_CONTROL,
+    CHANGE_ATK_DEF,
+
+    PIERCING,
+    ATTACK_MULTIPLE,
+
+    LIMIT_ATTACK,
+
+    DIRECT_ATTACK,
+
+    SPECIAL_SUMMON,
+
+    TOKEN,
+
+    TYPE_RELATED,
+    ATTRIBUTE_RELATED,
+
+    DAMAGE_LP,
+    GAIN_LP,
+
+    NEGATE_ATTACK,
+    NEGATE_EFFECT,
+
+    ACTIVATE,
+
+    TARGET,
+
+    RECOVER_FROM_GY,
+
+    CANT_DESTROY,
+    CANT_SUMMON,
+    CANT_ATTACK,
+
+    COUNTER;
+}
