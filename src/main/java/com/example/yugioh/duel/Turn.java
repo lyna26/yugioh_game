@@ -1,52 +1,44 @@
 package com.example.yugioh.duel;
 
-import com.example.yugioh.enums.Phase;
+import com.example.yugioh.enums.PhaseEnum;
+import com.example.yugioh.phase.DrawPhase;
+import com.example.yugioh.phase.IPhase;
 import com.example.yugioh.player.Player;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
-public class Round {
-    Player player1;
-    Player player2;
-    private Phase phase;
+public class Turn {
+    private IPhase phase;
 
-    boolean isPlayer1Turn;
+    private Duel duel;
 
-    public Round(Player player1, Player player2, boolean isPlayer1Turn) throws IOException {
+    public Turn(Duel duel) throws IOException {
         System.out.println("round !");
-        this.player1 = player1;
-        this.player2 = player2;
-        this.phase = Phase.DRAW;
-        this.isPlayer1Turn = isPlayer1Turn;
-
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("src/main/java/com/example/yugioh/interfaces/Duel.fxml").toURI().toURL());
-        Parent root  = fxmlLoader.load();
+        this.duel = duel;
+        this.phase = new DrawPhase(PhaseEnum.DRAW);
     }
 
     public Player getCurrentUser()
     {
-        if(isPlayer1Turn == true)
+        if(duel.isPlayer1Turn())
         {
-            return player1;
+            return duel.getPlayer1();
         }
         else
         {
-            return player2;
+            return duel.getPlayer2();
         }
     }
 
     public void play() {
-        System.out.println("play");
+        System.out.println("play round");
+
         Player currentPlayer = getCurrentUser();
 
         switch (phase)
         {
             case DRAW:
+                drawPhase();
                 break;
             case STANDBY:
                 break;
@@ -59,10 +51,12 @@ public class Round {
             case END:
                 break;
         }
+
     }
 
     public void drawPhase()
     {
+        this.getCurrentUser().drawCard();
         System.out.println("is draw phase");
     }
 
@@ -79,5 +73,9 @@ public class Round {
     public void endPhase()
     {
         System.out.println("end phase");
+    }
+
+    public void setCurrentPhase(IPhase phase) {
+        this.phase = phase;
     }
 }

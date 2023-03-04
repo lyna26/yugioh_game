@@ -21,22 +21,26 @@ public class MainMenuController {
     }
 
     @FXML
-    private void goToDeckBuilder(ActionEvent event) throws IOException {
-
+    private void goToDeckBuilder(ActionEvent event) throws IOException
+    {
         Parent view = getInterface("DeckMenu.fxml");
         Scene sc = new Scene(view,1280,720);
-        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage s = (Stage) ((Node    ) event.getSource()).getScene().getWindow();
         s.setScene(sc);
         s.show();
     }
 
     @FXML
     private void goToDuel(ActionEvent event) throws IOException {
+        String interfacePath = "./src/main/java/com/example/yugioh/interfaces/Duel.fxml";
 
-        Parent view = getInterface("DuelInterface.fxml");
-        Scene sc = new Scene(view,1280,720);
+        FXMLLoader fxmlLoader = new FXMLLoader(new File(interfacePath).toURI().toURL());
+        Parent root  = fxmlLoader.load();
+        Scene sc = new Scene(root,1280,720);
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setScene(sc);
         s.show();
+        DuelController dc = fxmlLoader.getController();
+        dc.getDuel().game();
     }
 }

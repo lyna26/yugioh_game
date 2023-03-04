@@ -23,6 +23,7 @@ public class Deck implements Serializable {
         this.minCard = deckType.getMinCard();
         this.maxCard = deckType.getMaxCard();
     }
+
     public boolean isValidSize()
     {
         int size = cardList.size() ;
@@ -37,6 +38,7 @@ public class Deck implements Serializable {
         return (cardList.stream().filter(card -> card.getLIMIT().getNbCopies()< occurrenceMap.get(card.getName()))
                 .count() == 0);
     }*/
+
     public boolean isValid()
     {
         return isValidSize();
@@ -45,6 +47,7 @@ public class Deck implements Serializable {
     public void addCard(Card card) {cardList.add(card);}
 
     public void removeCard(Card c){cardList.remove(c);}
+    public Card removeFirstCard(){return cardList.remove(0);}
     public void shuffle() {Collections.shuffle(cardList);}
 
     public List<Card> getCardList() {

@@ -1,6 +1,7 @@
 package com.example.yugioh.engines;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -84,12 +85,18 @@ public class DataBaseEngine {
             JsonNode card = cards.get(i);
             JsonNode cardImages = card.path("card_images");
 
+            Charset utf8 = Charset.forName("UTF-8");
+            Charset def = Charset.defaultCharset();
+            byte[] bytes = card.path("desc").asText().getBytes("UTF-8");
+
             for (JsonNode node : cardImages) {
-                System.out.print("node is" + node.path("id").asText());
                 pstm.setInt(1, node.path("id").asInt());
                 pstm.setString(2, card.path("name").asText());
                 pstm.setString(3, card.path("type").asText());
-                pstm.setNString(4, card.path("desc").asText());
+
+                String desc = new String(bytes , def.name());
+                pstm.setNString(4, desc);
+
                 pstm.setInt(5, card.path("atk").asInt());
                 pstm.setInt(6, card.path("def").asInt());
                 pstm.setInt(7, card.path("level").asInt());

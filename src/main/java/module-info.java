@@ -17,4 +17,5 @@ module com.example.yugioh {
     exports com.example.yugioh.controllers;
     opens com.example.yugioh.application to javafx.fxml;
     opens com.example.yugioh.controllers to javafx.fxml;
+    opens com.example.yugioh.phase to javafx.fxml;
 }

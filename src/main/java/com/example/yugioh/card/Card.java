@@ -1,7 +1,7 @@
 package com.example.yugioh.card;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import javafx.scene.image.Image;
+import com.example.yugioh.duel.Effect;
+
 
 import java.io.Serializable;
 import java.sql.ResultSet;
@@ -15,6 +15,7 @@ public abstract class Card extends javafx.scene.image.ImageView implements Seria
     private String description;
     private String image;
     private List<String> types;
+    private List<Effect> effects;
 
     /**
      * This constructor is used to generate a card from data exported from database
@@ -25,8 +26,11 @@ public abstract class Card extends javafx.scene.image.ImageView implements Seria
         try {
             id = card.getInt("id");
             name = card.getString("name");
+            //Charset def = Charset.defaultCharset();
+            //byte[] bytes = card.getString("desc").getBytes("UTF-8");
+            //String desc = new String(bytes , def.name());
             description = card.getString("desc");
-            image = card.getString("image");
+            image = card.getString("image_url");
             makeTypes(card.getString("type"));
         }
         catch(Exception e)
@@ -61,5 +65,12 @@ public abstract class Card extends javafx.scene.image.ImageView implements Seria
 
     public List<String> getTypes() {
         return types;
+    }
+
+    public List<Effect> getEffects() {
+        return effects;
+    }
+    public void setEffects(List<Effect> effects) {
+        this.effects = effects;
     }
 }

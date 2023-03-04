@@ -3,6 +3,7 @@ package com.example.yugioh.duel;
 import com.example.yugioh.card.Card;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,17 +46,12 @@ public class TextParserEngine {
         return condition;
     }
 
-    public static void analyseSimpleText(String text) throws UnsupportedEncodingException
+    public static String  analyseSimpleText(String text) throws UnsupportedEncodingException
     {
+        // Regular expression to match effect types and their values
+        Pattern pattern = Pattern.compile("(DESTROY_SPELL_TRAP|DESTROY_MONSTER|DESTROY_HAND|DESTROY_DECK|BANISH|SEND_GV|SEND_NHAND|SEND_NDECK|DRAW|SEARCH_DECK|CHANGE_POSITION|CHANGE_CONTROL|CHANGE_ATK_DEF|PIERCING|ATTACK_MULTIPLE|LIMIT_ATTACK|DIRECT_ATTACK|SPECIAL_SUMMON|TOKEN|TYPE_RELATED|ATTRIBUTE_RELATED|DAMAGE_LP|GAIN_LP|NEGATE_ATTACK|NEGATE_EFFECT|ACTIVATE|TARGET|RECOVER_FROM_GY|CANT_DESTROY|CANT_SUMMON|CANT_ATTACK|COUNTER)\\s*(\\([\\w\\s,]+\\))?");
 
-        if (text.contains("\u25cf") == true)
-        {
-            System.out.println("textContainsDot");
-        }
-        else
-        {
-            System.out.println("No ';' or ':' in the sentence :  " + text);
-        }
+        Matcher matcher = pattern.matcher(sentence);
     }
     public static Effect analyseSentence(String sentence)
     {
@@ -84,19 +80,23 @@ public class TextParserEngine {
         }
         return effect;
     }
-    public static void addTagsTo(Card c)
-    {
+    public static void addTagsTo(Card c) throws UnsupportedEncodingException {
         if (c.getTypes().contains("Effect"))
         {
             List<Effect> effects = new ArrayList<>();
 
-            String[] sentences = c.getDesc().split("\\.");
+            String desc = c.getDesc();
+
+            String[] sentences = desc.split("\\.");
 
             for (String sentence : sentences)
             {
                 Effect effect = analyseSentence(sentence);
+
                 effects.add(effect);
             }
+
+            c.setEffects(effects);
         }
     }
 }

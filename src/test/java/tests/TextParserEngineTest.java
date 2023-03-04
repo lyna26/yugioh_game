@@ -5,12 +5,11 @@ import com.example.yugioh.card.CardFactory;
 import com.example.yugioh.duel.TextParserEngine;
 import com.example.yugioh.engines.DataBaseEngine;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.engine.support.hierarchical.ThrowableCollector;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class TextParserEngineTest {
 
@@ -39,13 +38,13 @@ class TextParserEngineTest {
     }
 
     @Test
-    void addTagsTo() throws SQLException {
-        ResultSet res = DataBaseEngine.selectCardById("4064005");
+    void addTagsTo() throws SQLException, UnsupportedEncodingException {
+        ResultSet res = DataBaseEngine.selectCardById("64591429");
 
         while(res.next()) {
             Card c = CardFactory.createCard(res);
             TextParserEngine.addTagsTo(c);
-            System.out.println(c.toString());
+
         }
     }
 }
