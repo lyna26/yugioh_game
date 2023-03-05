@@ -3,6 +3,7 @@ package com.example.yugioh.player;
 import com.example.yugioh.card.Card;
 import com.example.yugioh.deck.Deck;
 import com.example.yugioh.deck.DeckSet;
+import com.example.yugioh.duel.Hand;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,9 +15,8 @@ public class Player implements Serializable {
     private List<DeckSet> decks;
     private DeckSet duelDeck;
     private transient boolean isYourTurn;
-    transient private int LP = 8000 ;
-    transient private List<Card> hand;
-
+    transient private int LP;
+    transient private Hand hand;
     public DeckSet getDuelDeck() {return this.duelDeck;}
     public void setDuelDeck(DeckSet duelDeck) {
             this.duelDeck = duelDeck;
@@ -38,16 +38,21 @@ public class Player implements Serializable {
     public List<DeckSet> getDecks() {
         return decks;
     }
-
+    public void setLP(int LP) {
+        this.LP = LP;
+    }
     public void drawCard() {
         Deck main  = duelDeck.getMainDeck();
         if (main.getCardList().size() > 0)
         {
             Card card = main.removeFirstCard();
-            hand.add(card);
+            hand.addCard(card);
         }
     }
-    public void setLP(int LP) {
-        this.LP = LP;
+    public Hand getHand() {
+        return hand;
+    }
+    public void setHand(Hand hand) {
+        this.hand = hand;
     }
 }

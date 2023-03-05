@@ -6,7 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class TextParserEngine {
@@ -49,9 +50,9 @@ public class TextParserEngine {
     public static String  analyseSimpleText(String text) throws UnsupportedEncodingException
     {
         // Regular expression to match effect types and their values
-        Pattern pattern = Pattern.compile("(DESTROY_SPELL_TRAP|DESTROY_MONSTER|DESTROY_HAND|DESTROY_DECK|BANISH|SEND_GV|SEND_NHAND|SEND_NDECK|DRAW|SEARCH_DECK|CHANGE_POSITION|CHANGE_CONTROL|CHANGE_ATK_DEF|PIERCING|ATTACK_MULTIPLE|LIMIT_ATTACK|DIRECT_ATTACK|SPECIAL_SUMMON|TOKEN|TYPE_RELATED|ATTRIBUTE_RELATED|DAMAGE_LP|GAIN_LP|NEGATE_ATTACK|NEGATE_EFFECT|ACTIVATE|TARGET|RECOVER_FROM_GY|CANT_DESTROY|CANT_SUMMON|CANT_ATTACK|COUNTER)\\s*(\\([\\w\\s,]+\\))?");
-
-        Matcher matcher = pattern.matcher(sentence);
+        //Pattern pattern = Pattern.compile("(DESTROY_SPELL_TRAP|DESTROY_MONSTER|DESTROY_HAND|DESTROY_DECK|BANISH|SEND_GV|SEND_NHAND|SEND_NDECK|DRAW|SEARCH_DECK|CHANGE_POSITION|CHANGE_CONTROL|CHANGE_ATK_DEF|PIERCING|ATTACK_MULTIPLE|LIMIT_ATTACK|DIRECT_ATTACK|SPECIAL_SUMMON|TOKEN|TYPE_RELATED|ATTRIBUTE_RELATED|DAMAGE_LP|GAIN_LP|NEGATE_ATTACK|NEGATE_EFFECT|ACTIVATE|TARGET|RECOVER_FROM_GY|CANT_DESTROY|CANT_SUMMON|CANT_ATTACK|COUNTER)\\s*(\\([\\w\\s,]+\\))?");
+        //Matcher matcher = pattern.matcher(sentence);
+        return text;
     }
     public static Effect analyseSentence(String sentence)
     {

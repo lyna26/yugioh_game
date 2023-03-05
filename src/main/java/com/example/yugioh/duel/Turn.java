@@ -2,20 +2,46 @@ package com.example.yugioh.duel;
 
 import com.example.yugioh.enums.PhaseEnum;
 import com.example.yugioh.phase.DrawPhase;
-import com.example.yugioh.phase.IPhase;
+import com.example.yugioh.phase.Phase;
 import com.example.yugioh.player.Player;
 
 import java.io.IOException;
 
-public class Turn {
-    private IPhase phase;
+import java.util.concurrent.CountDownLatch;
 
+public class Turn {
+    private Phase phase;
     private Duel duel;
+    private final CountDownLatch endTurnLatch;
+
 
     public Turn(Duel duel) throws IOException {
-        System.out.println("round !");
         this.duel = duel;
-        this.phase = new DrawPhase(PhaseEnum.DRAW);
+        Player currentPlayer = getCurrentUser();
+        this.phase = new DrawPhase(this);
+        endTurnLatch = new CountDownLatch(1);
+    }
+
+    public void run() {
+        // Do something
+        phase.play();
+
+
+        while (! (phase.getPhaseName() == PhaseEnum.END) ){
+
+            if( ! phase.isPlayed())
+            {
+                phase.play();
+            }
+        }
+
+        try {
+            endTurnLatch.await();
+        } catch (InterruptedException e)
+        {
+            Thread.currentThread().interrupt();
+            return;
+        }
     }
 
     public Player getCurrentUser()
@@ -30,52 +56,17 @@ public class Turn {
         }
     }
 
-    public void play() {
-        System.out.println("play round");
-
-        Player currentPlayer = getCurrentUser();
-
-        switch (phase)
-        {
-            case DRAW:
-                drawPhase();
-                break;
-            case STANDBY:
-                break;
-            case MAIN1:
-                break;
-            case BATTLE:
-                break;
-            case MAIN2:
-                break;
-            case END:
-                break;
-        }
-
+    public void playPhase() {
+        phase.play();
     }
 
-    public void drawPhase()
-    {
-        this.getCurrentUser().drawCard();
-        System.out.println("is draw phase");
+    public void endTurn() {
+        endTurnLatch.countDown();
     }
-
-    public void mainPhase()
-    {
-        System.out.println("is main phase");
+    public PhaseEnum getCurrentPhase() {
+        return phase.getPhaseName();
     }
-
-    public void battlePhase()
-    {
-        System.out.println("is battle phase");
-    }
-
-    public void endPhase()
-    {
-        System.out.println("end phase");
-    }
-
-    public void setCurrentPhase(IPhase phase) {
+    public void setCurrentPhase(Phase phase) {
         this.phase = phase;
     }
 }
