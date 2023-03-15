@@ -69,7 +69,7 @@ public class DuelTest {
         });
 
         try {
-            dc.getDuel().game();
+            dc.getDuel().play();
 
             // Wait for the GUI to be shown
             WaitForAsyncUtils.waitForFxEvents();

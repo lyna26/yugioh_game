@@ -38,7 +38,6 @@ public class CardResultController {
         Text textAtkDef = new Text(cardInfos.getAtk() + "/" + cardInfos.getDef());
         System.out.println("text" +textName.getText() + textRace.getText() + textAtkDef.getText());
         cardInfosFlow.setText(textName.getText() + textRace.getText() + textAtkDef.getText());
-
     }
 
     public CardInfo getCardInfo() {return cardInfos;}
