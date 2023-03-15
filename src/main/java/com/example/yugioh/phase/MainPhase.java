@@ -11,6 +11,5 @@ public class MainPhase extends Phase{
     @Override
     public void play() {
         System.out.println(this.getPhaseName().toString());
-        this.setIsPlayed(true);
     }
 }

@@ -11,6 +11,6 @@ public class EndPhase extends Phase {
     @Override
     public void play(){
         System.out.println("EndPhase...");
-        this.getTurn().endTurn();
+        this.getTurn().getDuel().switchTurn();
     }
 }

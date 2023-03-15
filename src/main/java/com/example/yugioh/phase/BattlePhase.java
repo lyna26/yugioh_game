@@ -7,13 +7,10 @@ public class BattlePhase extends Phase{
 
     public BattlePhase(Turn turn) {
 
-        super(PhaseEnum.BATTLE.BATTLE, turn);
+        super(PhaseEnum.BATTLE, turn);
     }
     @Override
     public void play() {
         System.out.println("BATTLE PHASE...");
-
-        this.setIsPlayed(true);
-
     }
 }

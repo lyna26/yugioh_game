@@ -36,10 +36,8 @@ public class DeckController {
         }
     }
     public void dragOver(DragEvent event){
-        System.out.println("drag over");
-        if (event.getGestureSource() != cardList &&
-                event.getDragboard().hasString()) {
-            /* allow for both copying and moving, whatever user chooses */
+        if (event.getGestureSource() != cardList && event.getDragboard().hasString())
+        {
             event.acceptTransferModes(TransferMode.ANY);
         }
         event.consume();
