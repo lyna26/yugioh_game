@@ -39,7 +39,5 @@ public class MainMenuController {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setScene(sc);
         s.show();
-        DuelController dc = fxmlLoader.getController();
-        dc.getDuel().play();
     }
 }

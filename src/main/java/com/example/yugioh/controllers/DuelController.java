@@ -68,6 +68,7 @@ public class DuelController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+        turnController.setDuelControl(this);
         duel = simulateGame();
         duel.play();
         startTurn();
