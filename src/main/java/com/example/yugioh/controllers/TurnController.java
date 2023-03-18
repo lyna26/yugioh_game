@@ -28,8 +28,13 @@ public class TurnController  {
     @FXML
     VBox buttons;
     private Turn turn ;
+    DuelController duelControl;
 
-    public TurnController() {}
+    public void setDuelControl(DuelController duelControl) {
+
+        this.duelControl = duelControl;
+    }
+
     public void handleDrawPhase(MouseEvent event) {
         System.out.println("draw phase handler");
         Button button = (Button) event.getSource();
@@ -38,42 +43,48 @@ public class TurnController  {
         turn.getCurrentPhase().play();
     }
     public void handleSpPhase(MouseEvent event) {
+        System.out.println("Sp phase handler");
         Button button = (Button) event.getSource();
         button.setDisable(true);
         turn.setCurrentPhase(new SpPhase(turn.getDuel().getCurrentTurn()));
         turn.getCurrentPhase().play();
     }
     public void handleMain1Phase(MouseEvent event) {
+        System.out.println("Main1 phase handler");
         turn.setCurrentPhase(new MainPhase(PhaseEnum.MAIN1, turn));
         turn.getCurrentPhase().play();
     }
     public void handleBattlePhase(Event event) {
+        System.out.println("battle phase handler");
         Button button = (Button) event.getSource();
         disbaleButtonsBefore(button);
         turn.setCurrentPhase(new BattlePhase(turn));
         turn.getCurrentPhase().play();
     }
     public void handleMain2Phase(Event event) {
+        System.out.println("main2 phase handler");
         Button button = (Button) event.getSource();
         disbaleButtonsBefore(button);
         turn.setCurrentPhase(new MainPhase(PhaseEnum.MAIN2, turn));
         turn.getCurrentPhase().play();
     }
     public void handleEndPhase(Event event) {
+        System.out.println("end phase handler");
         Button button = (Button) event.getSource();
         button.setDisable(true);
         disbaleButtonsBefore(button);
         turn.setCurrentPhase(new EndPhase(turn));
-        turn.getCurrentPhase().play();
-        turn.getDuel().getTurns().add(turn);
+        duelControl.startTurn();
     }
     public void disbaleButtonsBefore(Button button) {
-        int currentIndex = buttons.getChildren().indexOf(button) - 1;
+        int currentIndex = buttons.getChildren().indexOf(button);
+        int beforeIndex = currentIndex--;
+        button = (Button) buttons.getChildren().get(beforeIndex);
         while (!button.isDisable())
         {
-            currentIndex--;
             button.setDisable(true);
-            button = (Button) buttons.getChildren().get(currentIndex);
+            beforeIndex--;
+            button = (Button) buttons.getChildren().get(beforeIndex);
         }
     }
 
@@ -109,7 +120,6 @@ public class TurnController  {
     public Turn getTurn() {
         return turn;
     }
-
     public void setTurn(Turn currentTurn) {
         this.turn = currentTurn;
     }
