@@ -1,12 +1,12 @@
 package com.example.yugioh.phase;
 
 import com.example.yugioh.duel.Turn;
-import com.example.yugioh.enums.PhaseEnum;
+import com.example.yugioh.enums.Phase;
 
-public class SpPhase extends Phase {
+public class SpPhase extends com.example.yugioh.phase.Phase {
     public SpPhase(Turn turn)
     {
-        super(PhaseEnum.STANDBY, turn);
+        super(Phase.STANDBY, turn);
     }
 
     @Override

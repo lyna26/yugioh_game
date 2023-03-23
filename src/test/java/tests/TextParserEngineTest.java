@@ -1,7 +1,8 @@
 package tests;
 
 import com.example.yugioh.card.Card;
-import com.example.yugioh.card.CardFactory;
+import com.example.yugioh.cardFactories.CardFactory;
+import com.example.yugioh.cardFactories.ICardFactory;
 import com.example.yugioh.duel.TextParserEngine;
 import com.example.yugioh.engines.DataBaseEngine;
 import org.junit.jupiter.api.Test;

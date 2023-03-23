@@ -3,11 +3,8 @@ package com.example.yugioh.duel;
 import com.example.yugioh.card.Card;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class TextParserEngine {
@@ -86,7 +83,7 @@ public class TextParserEngine {
         {
             List<Effect> effects = new ArrayList<>();
 
-            String desc = c.getDesc();
+            String desc = c.getDescription();
 
             String[] sentences = desc.split("\\.");
 

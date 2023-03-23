@@ -1,9 +1,9 @@
 package com.example.yugioh.controllers;
 
-import com.example.yugioh.card.CardFactory;
+import com.example.yugioh.cardFactories.CardFactory;
 import com.example.yugioh.deck.Deck;
 import com.example.yugioh.deck.DeckSet;
-import com.example.yugioh.deck.DeckType;
+import com.example.yugioh.enums.DeckType;
 import com.example.yugioh.duel.Duel;
 import com.example.yugioh.duel.Turn;
 import com.example.yugioh.engines.DataBaseEngine;

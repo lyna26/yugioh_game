@@ -1,10 +1,9 @@
 package com.example.yugioh.phase;
 
 import com.example.yugioh.duel.Turn;
-import com.example.yugioh.enums.PhaseEnum;
 
-public class MainPhase extends Phase{
-    public MainPhase(PhaseEnum phaseName, Turn turn) {
+public class MainPhase extends com.example.yugioh.phase.Phase {
+    public MainPhase(com.example.yugioh.enums.Phase phaseName, Turn turn) {
         super(phaseName, turn);
     }
 

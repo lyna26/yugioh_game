@@ -1,13 +1,12 @@
 package com.example.yugioh.phase;
 
 import com.example.yugioh.duel.Turn;
-import com.example.yugioh.enums.PhaseEnum;
 
 public abstract class Phase implements IPhase{
-    private PhaseEnum phaseName;
+    private com.example.yugioh.enums.Phase phaseName;
     private Turn turn;
 
-    public Phase(PhaseEnum phaseName, Turn turn) {
+    public Phase(com.example.yugioh.enums.Phase phaseName, Turn turn) {
         this.phaseName = phaseName;
         this.turn = turn;
     }
@@ -17,7 +16,7 @@ public abstract class Phase implements IPhase{
         return turn;
     }
 
-    public PhaseEnum getPhaseName()
+    public com.example.yugioh.enums.Phase getPhaseName()
     {
         return phaseName;
     }

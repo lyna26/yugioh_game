@@ -1,12 +1,12 @@
 package com.example.yugioh.controllers;
 
 import com.example.yugioh.card.Card;
-import com.example.yugioh.card.CardFactory;
+import com.example.yugioh.cardFactories.CardFactory;
+import com.example.yugioh.cardFactories.ICardFactory;
 import com.example.yugioh.deck.Deck;
 import com.example.yugioh.engines.DataBaseEngine;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
