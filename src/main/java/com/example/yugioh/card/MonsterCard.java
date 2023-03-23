@@ -1,10 +1,12 @@
 package com.example.yugioh.card;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import java.sql.ResultSet;
-import java.util.List;
+import java.sql.SQLException;
 
+/**
+ * A class representing a monster card in the Yu-Gi-Oh! trading card game.
+ * Extends the {@link Card} class.
+ */
 public class MonsterCard extends Card {
     private int atk;
     private int def;
@@ -12,9 +14,11 @@ public class MonsterCard extends Card {
     private String attribute;
 
     /**
-     * This constructor is used to generate a monster card from data exported from database
+     * Constructs a new MonsterCard object with the given data from a database ResultSet.
+     *
+     * @param card a ResultSet object containing the card data
      */
-    public MonsterCard(ResultSet card) {
+    public MonsterCard(ResultSet card) throws SQLException {
         super(card);
         try {
             this.atk = card.getInt("atk");
@@ -57,5 +61,15 @@ public class MonsterCard extends Card {
 
     public void setAttribute(String attribute) {
         this.attribute = attribute;
+    }
+
+    @Override
+    public String toString() {
+        return "MonsterCard{" +
+                "atk=" + atk +
+                ", def=" + def +
+                ", level=" + level +
+                ", attribute='" + attribute + '\'' +
+                '}';
     }
 }

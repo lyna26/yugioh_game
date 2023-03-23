@@ -1,5 +1,7 @@
 package com.example.yugioh.deck;
 
+import com.example.yugioh.enums.DeckType;
+
 import java.io.Serializable;
 
 public class DeckSet implements Serializable {

@@ -1,14 +1,14 @@
 package tests;
 
 
-import com.example.yugioh.card.CardFactory;
+import com.example.yugioh.cardFactories.CardFactory;
 import com.example.yugioh.controllers.DuelController;
 import com.example.yugioh.deck.Deck;
 import com.example.yugioh.deck.DeckSet;
-import com.example.yugioh.deck.DeckType;
+import com.example.yugioh.enums.DeckType;
 import com.example.yugioh.duel.Duel;
 import com.example.yugioh.engines.DataBaseEngine;
-import com.example.yugioh.enums.PhaseEnum;
+import com.example.yugioh.enums.Phase;
 import com.example.yugioh.player.Player;
 import de.saxsys.javafx.test.JfxRunner;
 import javafx.application.Platform;
@@ -79,7 +79,7 @@ public class DuelTest {
             //clickOn("#main1");
 
             // Verify that the game has transitioned to the main phase 1
-            assertEquals(PhaseEnum.MAIN1, dc.getDuel().getCurrentTurn().getCurrentPhase());
+            assertEquals(Phase.MAIN1, dc.getDuel().getCurrentTurn().getCurrentPhase());
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,4 +1,4 @@
-package com.example.yugioh.deck;
+package com.example.yugioh.enums;
 
 public enum DeckType {
     MAIN(40,60),

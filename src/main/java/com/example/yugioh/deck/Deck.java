@@ -1,10 +1,10 @@
 package com.example.yugioh.deck;
 
 import com.example.yugioh.card.Card;
+import com.example.yugioh.enums.DeckType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,9 +12,7 @@ import java.util.List;
 public class Deck implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<Card> cardList ;
-
     private final  int minCard ;
-
     private final int maxCard;
 
     public Deck(DeckType deckType)
@@ -47,7 +45,9 @@ public class Deck implements Serializable {
     public void addCard(Card card) {cardList.add(card);}
 
     public void removeCard(Card c){cardList.remove(c);}
+
     public Card removeFirstCard(){return cardList.remove(0);}
+
     public void shuffle() {Collections.shuffle(cardList);}
 
     public List<Card> getCardList() {

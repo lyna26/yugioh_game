@@ -1,6 +1,6 @@
 package com.example.yugioh.enums;
 
-public enum PhaseEnum {
+public enum Phase {
     DRAW,
     STANDBY,
     MAIN1,

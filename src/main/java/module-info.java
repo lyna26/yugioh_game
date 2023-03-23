@@ -11,6 +11,7 @@ module com.example.yugioh {
     requires com.almasb.fxgl.all;
     requires com.fasterxml.jackson.databind;
     requires java.sql;
+    requires annotations;
 
     opens com.example.yugioh to javafx.fxml;
     exports com.example.yugioh.application;

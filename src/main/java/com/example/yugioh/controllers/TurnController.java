@@ -1,7 +1,7 @@
 package com.example.yugioh.controllers;
 
 import com.example.yugioh.duel.Turn;
-import com.example.yugioh.enums.PhaseEnum;
+import com.example.yugioh.enums.Phase;
 import com.example.yugioh.phase.*;
 
 import javafx.event.Event;
@@ -51,7 +51,7 @@ public class TurnController  {
     }
     public void handleMain1Phase(MouseEvent event) {
         System.out.println("Main1 phase handler");
-        turn.setCurrentPhase(new MainPhase(PhaseEnum.MAIN1, turn));
+        turn.setCurrentPhase(new MainPhase(Phase.MAIN1, turn));
         turn.getCurrentPhase().play();
     }
     public void handleBattlePhase(Event event) {
@@ -65,7 +65,7 @@ public class TurnController  {
         System.out.println("main2 phase handler");
         Button button = (Button) event.getSource();
         disbaleButtonsBefore(button);
-        turn.setCurrentPhase(new MainPhase(PhaseEnum.MAIN2, turn));
+        turn.setCurrentPhase(new MainPhase(Phase.MAIN2, turn));
         turn.getCurrentPhase().play();
     }
     public void handleEndPhase(Event event) {

@@ -1,11 +1,11 @@
 package com.example.yugioh.phase;
 
 import com.example.yugioh.duel.Turn;
-import com.example.yugioh.enums.PhaseEnum;
+import com.example.yugioh.enums.Phase;
 
-public class DrawPhase extends Phase {
+public class DrawPhase extends com.example.yugioh.phase.Phase {
     public DrawPhase(Turn turn) {
-        super(PhaseEnum.DRAW, turn);
+        super(Phase.DRAW, turn);
     }
 
     @Override
