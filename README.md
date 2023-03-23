@@ -1,4 +1,4 @@
-Yu-Gi-Oh! Game
+Yu-Gi-Oh! Game ( WORK IN PROGRESS) 
 
 Welcome to the Yu-Gi-Oh! Game, a digital adaptation of the popular trading card game. In this game, 
 players use decks of cards featuring powerful monsters, magic spells, and traps to defeat their opponents and become the best duelist.
